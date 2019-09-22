@@ -12,14 +12,14 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class ArtistList extends ArrayAdapter<Artist> {
+public class TrackList extends ArrayAdapter<Track> {
     private Activity context;
-    private List<Artist> artists;
+    List<Track> tracks;
 
-    public ArtistList(Activity context, List<Artist> artists) {
-        super(context, R.layout.layout_artist_list, artists);
+    public TrackList(Activity context, List<Track> tracks) {
+        super(context, R.layout.layout_artist_list, tracks);
         this.context = context;
-        this.artists = artists;
+        this.tracks = tracks;
     }
 
     @NonNull
@@ -27,12 +27,13 @@ public class ArtistList extends ArrayAdapter<Artist> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.layout_artist_list, null, true);
-        TextView textViewName  = (TextView) listViewItem.findViewById(R.id.textViewName);
-        TextView textViewGenre = (TextView) listViewItem.findViewById(R.id.textViewGenre);
 
-        Artist artist = artists.get(position);
-        textViewName.setText(artist.getArtistName());
-        textViewGenre.setText(artist.getArtistGenre());
+        TextView textViewName   = (TextView) listViewItem.findViewById(R.id.textViewName);
+        TextView textViewRating = (TextView) listViewItem.findViewById(R.id.textViewGenre);
+
+        Track track = tracks.get(position);
+        textViewName.setText(track.getTrackName());
+        textViewRating.setText(String.valueOf(track.getRating()));
 
         return listViewItem;
     }

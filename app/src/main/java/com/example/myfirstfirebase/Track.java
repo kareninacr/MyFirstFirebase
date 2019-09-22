@@ -1,29 +1,26 @@
 package com.example.myfirstfirebase;
 
 public class Track {
-    private String trackId;
+    private String id;
     private String trackName;
-    private int trackRating;
+    private int rating;
 
     public Track() {
 
     }
 
-    public String getTrackId() {
-        return trackId;
+    public Track(String id, String trackName, int rating) {
+        this.trackName = trackName;
+        this.rating = rating;
+        this.id = id;
     }
+
 
     public String getTrackName() {
         return trackName;
     }
 
-    public int getTrackRating() {
-        return trackRating;
-    }
-
-    public Track(String trackId, String trackName, int trackRating) {
-        this.trackId = trackId;
-        this.trackName = trackName;
-        this.trackRating = trackRating;
+    public int getRating() {
+        return rating;
     }
 }

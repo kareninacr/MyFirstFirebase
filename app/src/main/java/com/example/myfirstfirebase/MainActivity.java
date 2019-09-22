@@ -1,6 +1,5 @@
 package com.example.myfirstfirebase;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -29,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String ARTIST_ID = "artistid";
 
     EditText editTextName;
-    Button buttonAddArtist;
     Spinner spinnerGenre;
-    DatabaseReference databaseArtists;
+    Button buttonAddArtist;
     ListView listViewArtists;
     List<Artist> artists;
+    DatabaseReference databaseArtists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         editTextName    = (EditText) findViewById(R.id.editTextName);
         spinnerGenre    = (Spinner) findViewById(R.id.spinnerGenres);
-        buttonAddArtist = (Button) findViewById(R.id.buttonAddArtist);
         listViewArtists = (ListView)findViewById(R.id.listViewArtist);
+        buttonAddArtist = (Button) findViewById(R.id.buttonAddArtist);
         artists         = new ArrayList<>();
 
         buttonAddArtist.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +58,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Artist artist = artists.get(i);
 
-                Intent intent = new Intent(getApplicationContext(), AddTrackActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ArtistActivity.class);
                 intent.putExtra(ARTIST_ID, artist.getArtistId());
                 intent.putExtra(ARTIST_NAME, artist.getArtistName());
+
                 startActivity(intent);
             }
         });
